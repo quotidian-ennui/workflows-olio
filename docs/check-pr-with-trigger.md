@@ -1,0 +1,37 @@
+# default-updatecli
+
+Run some standardised tests on the PR (via reviewdog etc) and issue a repository dispatch if the PR was created by dependabot.
+
+## Why
+
+> Dependabot is a busy little bee and sometimes there a lot of toil when it comes to dependabot.
+
+## Usage
+
+- Requires you to have `contents:write` & `pull_requests:write` permissions attached to the token (depending on what you're doing).
+
+```action
+name: Check PR
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, edited]
+
+permissions: {}
+
+jobs:
+  check-pr:
+    uses: ./.github/workflows/check-pr-with-trigger.yml
+    secrets: inherit
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+```
+
+## Inputs
+
+## Outputs
+
+## Secrets
