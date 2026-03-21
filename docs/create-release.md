@@ -34,7 +34,7 @@ jobs:
 ## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
-
+No inputs.
 <!-- AUTO-DOC-INPUT:END -->
 
 ## Outputs
