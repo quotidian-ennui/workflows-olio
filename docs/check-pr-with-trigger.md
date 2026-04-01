@@ -1,4 +1,4 @@
-# default-updatecli
+# check-pr-with-trigger
 
 Run some standardised tests on the PR (via reviewdog etc) and issue a repository dispatch if the PR was created by dependabot.
 

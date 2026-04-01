@@ -1,4 +1,4 @@
-# default-updatecli
+# create-release
 
 Create a release using orhun/git-cliff-action and ncipollo/release-action
 
