@@ -1,6 +1,15 @@
 name: action-dependabot-merge
 on:
   workflow_call:
+    inputs:
+      app_id:
+        required: true
+        description: The App ID that will modify your github workflows
+        type: string
+    secrets:
+      app_private_key:
+        required: true
+        description: The private key associated with the App ID
 
 jobs:
   actions_merge:
@@ -14,8 +23,8 @@ jobs:
         uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
         id: app-token
         with:
-          app-id: ${{ vars.WORKFLOW_UPDATE_APP_ID }}
-          private-key: ${{ secrets.WORKFLOW_UPDATE_KEY }}
+          app-id: ${{ inputs.app_id }}
+          private-key: ${{ secrets.app_private_key }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ github.event.repository.name}}
       - name: Checkout branch

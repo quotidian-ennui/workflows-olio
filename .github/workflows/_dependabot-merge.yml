@@ -12,4 +12,7 @@ permissions: {}
 jobs:
   actions_merge:
     uses: ./.github/workflows/action-dependabot-merge.yml
-    secrets: inherit
+    with:
+      app_id: ${{ vars.WORKFLOW_UPDATE_APP_ID }}
+    secrets:
+      app_private_key: ${{ secrets.WORKFLOW_UPDATE_KEY }}

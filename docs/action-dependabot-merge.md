@@ -4,9 +4,7 @@ Merge dependabot changes to workflows
 
 ## Why
 
-> This is an action that's very personal since the defaults refer to an explicit github app that I've created so that I can make modifications to github actions.
->
-> Works in tandem with check-pr-with-trigger.
+> This is an action that's very personal and works in tandem with check-pr-with-trigger.
 
 ## Usage
 
@@ -23,18 +21,23 @@ on:
 
 permissions: {}
 
-# A push via dependabot basically means that the github actions
-# have been upgraded;
 jobs:
   actions_merge:
     uses: ./.github/workflows/action-dependabot-merge.yml
-    secrets: inherit
+    with:
+      app_id: ${{ vars.app-id }}
+    secrets:
+      app_private_key: ${{ secrets.app-id-secret }}
 ```
 
 ## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
-No inputs.
+
+| INPUT  |  TYPE  | REQUIRED | DEFAULT |                    DESCRIPTION                    |
+|--------|--------|----------|---------|---------------------------------------------------|
+| app_id | string |   true   |         | The App ID that will modify your github workflows |
+
 <!-- AUTO-DOC-INPUT:END -->
 
 ## Outputs
@@ -46,6 +49,10 @@ No outputs.
 ## Secrets
 
 <!-- AUTO-DOC-SECRETS:START - Do not remove or modify this section -->
-No secrets.
+
+|     SECRET      | REQUIRED |                DESCRIPTION                 |
+|-----------------|----------|--------------------------------------------|
+| app_private_key |   true   | The private key associated with the App ID |
+
 <!-- AUTO-DOC-SECRETS:END -->
 
