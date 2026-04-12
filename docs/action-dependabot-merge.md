@@ -34,9 +34,10 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-| INPUT  |  TYPE  | REQUIRED | DEFAULT |                    DESCRIPTION                    |
-|--------|--------|----------|---------|---------------------------------------------------|
-| app_id | string |   true   |         | The App ID that will modify your github workflows |
+|   INPUT   |  TYPE  | REQUIRED | DEFAULT |                                           DESCRIPTION                                           |
+|-----------|--------|----------|---------|-------------------------------------------------------------------------------------------------|
+|  app_id   | string |  false   |         | GitHub App ID (deprecated) with permission to manage dependabot alerts; use 'client_id' instead |
+| client_id | string |  false   |         |                GitHub App Client ID with permission to manage dependabot alerts                 |
 
 <!-- AUTO-DOC-INPUT:END -->
 

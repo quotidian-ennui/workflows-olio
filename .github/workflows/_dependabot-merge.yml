@@ -13,6 +13,6 @@ jobs:
   actions_merge:
     uses: ./.github/workflows/action-dependabot-merge.yml
     with:
-      app_id: ${{ vars.WORKFLOW_UPDATE_APP_ID }}
+      client_id: ${{ vars.WORKFLOW_UPDATE_CLIENT_ID }}
     secrets:
       app_private_key: ${{ secrets.WORKFLOW_UPDATE_KEY }}
