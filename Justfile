@@ -82,6 +82,18 @@ autodoc:
       fi
     done
 
+[doc("Show proposed release notes")]
+[group("release")]
+[script]
+changelog *args="--unreleased":
+    #
+    set -eo pipefail
+    if [[ -s "cliff.toml" ]]; then
+      git cliff "$@"
+    else
+      git cliff --config "~/.config/git-cliff/default-cliff.toml" "$@"
+    fi
+
 [doc('auto-generate tag and release')]
 [group('release')]
 [script]
@@ -92,9 +104,6 @@ autotag push="localonly":
     next="$(just next)"
     just release "$next" "{{ push }}"
 
-# Since we have that refer to their peers(e.g. dependabot-action-merge refers
-# to pr-or-issue-comment) we rewrite the @main to be @tag, commit, tag and
-# switch back to @main
 [doc('Tag & release')]
 [group('release')]
 [script]
