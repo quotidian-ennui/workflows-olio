@@ -10,7 +10,6 @@ permissions: {}
 jobs:
   check-pr:
     uses: ./.github/workflows/check-pr-with-trigger.yml
-    secrets: inherit
     permissions:
       contents: write
       pull-requests: write
