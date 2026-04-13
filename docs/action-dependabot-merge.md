@@ -34,10 +34,9 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|   INPUT   |  TYPE  | REQUIRED | DEFAULT |                                           DESCRIPTION                                           |
-|-----------|--------|----------|---------|-------------------------------------------------------------------------------------------------|
-|  app_id   | string |  false   |         | GitHub App ID (deprecated) with permission to manage dependabot alerts; use 'client_id' instead |
-| client_id | string |  false   |         |                GitHub App Client ID with permission to manage dependabot alerts                 |
+|   INPUT   |  TYPE  | REQUIRED | DEFAULT |                           DESCRIPTION                            |
+|-----------|--------|----------|---------|------------------------------------------------------------------|
+| client_id | string |   true   |         | GitHub App Client ID with permission to manage dependabot alerts |
 
 <!-- AUTO-DOC-INPUT:END -->
 
