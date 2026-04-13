@@ -1,0 +1,20 @@
+name: release
+on:
+  push:
+    tags:
+      - "*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  create-release:
+    uses: ./.github/workflows/create-release.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
+
