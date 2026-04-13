@@ -46,5 +46,9 @@ No outputs.
 ## Secrets
 
 <!-- AUTO-DOC-SECRETS:START - Do not remove or modify this section -->
-No secrets.
+
+| SECRET | REQUIRED |           DESCRIPTION            |
+|--------|----------|----------------------------------|
+| token  |   true   | Token for generating the release |
+
 <!-- AUTO-DOC-SECRETS:END -->
