@@ -32,7 +32,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          token: ${{ steps.app-token-client-id.outputs.token || steps.app-token-app-id.outputs.token }}
+          token: ${{ steps.app-token-client-id.outputs.token }}
           ref: ${{ github.event.client_payload.base.ref }}
           persist-credentials: false
 
@@ -40,5 +40,5 @@ jobs:
         id: dependabot_merge
         uses: quotidian-ennui/actions-olio/dependabot-merge@448a2329caa783bbfe2ad58fc2123f7e05efae89 # v0.10.3
         with:
-          token: ${{ steps.app-token-client-id.outputs.token || steps.app-token-app-id.outputs.token }}
+          token: ${{ steps.app-token-client-id.outputs.token }}
           change_filter: ".github/workflows/**"
