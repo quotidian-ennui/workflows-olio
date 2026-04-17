@@ -1,6 +1,17 @@
 name: create-release
 on:
   workflow_call:
+    inputs:
+      make_latest:
+        description: "This is the latest release"
+        required: false
+        default: true
+        type: boolean
+      draft:
+        description: "This is a draft release"
+        required: false
+        default: false
+        type: boolean
     secrets:
       token:
         required: true
@@ -30,5 +41,5 @@ jobs:
         with:
           token: ${{ secrets.token }}
           bodyFile: ${{ steps.changelog.outputs.changelog }}
-          draft: false
-          makeLatest: true
+          draft: ${{ inputs.draft }}
+          makeLatest: ${{ inputs.make_latest }}
