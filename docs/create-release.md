@@ -34,7 +34,12 @@ jobs:
 ## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
-No inputs.
+
+|    INPUT    |  TYPE   | REQUIRED | DEFAULT |        DESCRIPTION         |
+|-------------|---------|----------|---------|----------------------------|
+|    draft    | boolean |  false   | `false` |  This is a draft release   |
+| make_latest | boolean |  false   | `true`  | This is the latest release |
+
 <!-- AUTO-DOC-INPUT:END -->
 
 ## Outputs
