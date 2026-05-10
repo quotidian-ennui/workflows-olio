@@ -10,6 +10,7 @@ on:
         description: The file that contains the ignore directives (defaults to .github/dismiss-alerts.yml)
         required: false
         default: ".github/dismiss-alerts.yml"
+        type: string
     secrets:
       app_private_key:
         required: true
