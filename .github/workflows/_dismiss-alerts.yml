@@ -1,0 +1,25 @@
+name: dismiss-dependabot-alerts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 06 * * 1"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/dismiss-alerts.yml"
+      - ".github/workflows/dismiss-dependabot-alerts.yml"
+      - ".github/workflows/_dismiss-alerts.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+jobs:
+  dismiss-alerts:
+    uses: ./.github/workflows/dismiss-dependabot-alerts.yml
+    with:
+      client_id: ${{ vars.WORKFLOW_UPDATE_CLIENT_ID }}
+    secrets:
+      app_private_key: ${{ secrets.WORKFLOW_UPDATE_KEY }}

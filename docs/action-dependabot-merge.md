@@ -34,9 +34,9 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|   INPUT   |  TYPE  | REQUIRED | DEFAULT |                           DESCRIPTION                            |
-|-----------|--------|----------|---------|------------------------------------------------------------------|
-| client_id | string |   true   |         | GitHub App Client ID with permission to manage dependabot alerts |
+|   INPUT   |  TYPE  | REQUIRED | DEFAULT |     DESCRIPTION      |
+|-----------|--------|----------|---------|----------------------|
+| client_id | string |   true   |         | GitHub App Client ID |
 
 <!-- AUTO-DOC-INPUT:END -->
 
