@@ -41,10 +41,10 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|     INPUT      |  TYPE  | REQUIRED |           DEFAULT            |                                      DESCRIPTION                                      |
-|----------------|--------|----------|------------------------------|---------------------------------------------------------------------------------------|
-|   client_id    | string |   true   |                              |           GitHub App Client ID with permission to manage dependabot alerts            |
-| dismissal_file |        |  false   | `.github/dismiss-alerts.yml` | The file that contains the ignore directives (defaults to .github/dismiss-alerts.yml) |
+|     INPUT      |  TYPE  | REQUIRED |            DEFAULT             |                                      DESCRIPTION                                      |
+|----------------|--------|----------|--------------------------------|---------------------------------------------------------------------------------------|
+|   client_id    | string |   true   |                                |           GitHub App Client ID with permission to manage dependabot alerts            |
+| dismissal_file | string |  false   | `".github/dismiss-alerts.yml"` | The file that contains the ignore directives (defaults to .github/dismiss-alerts.yml) |
 
 <!-- AUTO-DOC-INPUT:END -->
 
