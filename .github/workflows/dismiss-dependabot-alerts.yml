@@ -1,0 +1,45 @@
+name: dismiss-dependabot-alerts
+on:
+  workflow_call:
+    inputs:
+      client_id:
+        description: "GitHub App Client ID with permission to manage dependabot alerts"
+        required: true
+        type: string
+      dismissal_file:
+        description: The file that contains the ignore directives (defaults to .github/dismiss-alerts.yml)
+        required: false
+        default: ".github/dismiss-alerts.yml"
+        type: string
+    secrets:
+      app_private_key:
+        required: true
+        description: The private key associated with the App ID
+
+permissions: {}
+jobs:
+  dismiss-alerts:
+    timeout-minutes: 2
+    name: dismiss-alerts
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Create Token"
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+        id: app-token
+        with:
+          client-id: ${{ inputs.client_id }}
+          private-key: ${{ secrets.app_private_key }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name}}
+          permission-vulnerability-alerts: write
+      - name: "Checkout"
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+          token: ${{ steps.app-token.outputs.token }}
+      - name: "Dismiss alerts"
+        id: dismiss-alerts
+        uses: quotidian-ennui/actions-olio/dismiss-dependabot-alerts@a23dce3e6ff1ea5b39cfefd23a604426be7868f1 # v1.1.4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          dismissal_file: ${{ inputs.dismissal_file }}

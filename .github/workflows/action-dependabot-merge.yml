@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       client_id:
-        description: "GitHub App Client ID with permission to manage dependabot alerts"
+        description: "GitHub App Client ID"
         required: true
         type: string
 
