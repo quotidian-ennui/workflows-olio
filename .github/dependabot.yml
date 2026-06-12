@@ -9,9 +9,8 @@ updates:
       prefix: "deps(actions): "
     open-pull-requests-limit: 20
     schedule:
-      interval: "daily"
-      time: "05:13"
-      timezone: Europe/London
+      interval: "cron"
+      cronjob: "12 05 * * *"
     rebase-strategy: disabled
     cooldown:
       default-days: 3
