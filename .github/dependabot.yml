@@ -17,6 +17,6 @@ updates:
       exclude:
         - "quotidian-ennui/*"
     groups:
-      workflows-olio:
+      actions-olio:
         patterns:
           - "quotidian-ennui/actions-olio/*"
