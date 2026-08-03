@@ -75,6 +75,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: dispatch
-        uses: quotidian-ennui/actions-olio/pr-trigger@9130e635427230114c6cb47eef6b828cb08d9cd8 # v1.3.2
+        uses: quotidian-ennui/actions-olio/pr-trigger@6a111ea6a684e2d74c811079ebbb6c923da85796 # v1.3.3
         with:
           event_type: "dependabot-merge"
