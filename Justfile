@@ -1,6 +1,6 @@
 set positional-arguments
 set unstable
-set script-interpreter := ['/usr/bin/env', 'bash']
+set script-interpreter := ['/usr/bin/env', 'bash', '-eo', 'pipefail']
 
 # show recipes
 [private]
@@ -12,8 +12,6 @@ set script-interpreter := ['/usr/bin/env', 'bash']
 [script]
 next:
     #shellcheck disable=SC2148
-    set -eo pipefail
-
     VERSION_REGEXP_MAJOR='s#^([0-9]+)\.([0-9]+)\.([0-9]+).*$#\1#'
     VERSION_REGEXP_MINOR='s#^([0-9]+)\.([0-9]+)\.([0-9]+).*$#\2#'
     VERSION_REGEXP_PATCH='s#^([0-9]+)\.([0-9]+)\.([0-9]+).*$#\3#'
@@ -68,8 +66,6 @@ next:
 [script]
 autodoc:
     #shellcheck disable=SC2148
-    set -eo pipefail
-
     mapfile -t workflow_files < <(find ".github/workflows" -type f -name "*.yml")
     for workflow_file in "${workflow_files[@]}"; do
       workflow="$(basename "$workflow_file")"
@@ -86,8 +82,7 @@ autodoc:
 [group("release")]
 [script]
 changelog *args="--unreleased":
-    #
-    set -eo pipefail
+    #shellcheck disable=SC2148
     if [[ -s "cliff.toml" ]]; then
       git cliff "$@"
     else
@@ -97,10 +92,8 @@ changelog *args="--unreleased":
 [doc('auto-generate tag and release')]
 [group('release')]
 [script]
-please-release push="localonly":
+please-release push="github":
     #shellcheck disable=SC2148
-    set -eo pipefail
-
     next="$(just next)"
     just release "$next" "{{ push }}"
 
@@ -111,8 +104,6 @@ alias autotag := please-release
 [script]
 release tag push="localonly":
     #shellcheck disable=SC2148
-    set -eo pipefail
-
     check_uptodate() {
       default_branch=$(git remote show "origin" | grep 'HEAD branch' | cut -d' ' -f5)
       remote_hash=$(git ls-remote origin "refs/heads/$default_branch" | cut -f1)
